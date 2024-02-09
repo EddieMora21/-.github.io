@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* Animación para el deslizamiento de la imagen de fondo */
+@keyframes slideBackground {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+body{
+    background-color: #B28ACE;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+.regalo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.regalo-txt {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.regalo-txt p{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.regalo-txt button{
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.gift-box {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  perspective: 800px; /* Para efecto de perspectiva en las transformaciones */
+  cursor: pointer; /* Cambiar el cursor al pasar sobre la caja de regalo */
+  background-color: #ff98a3; /* Rosa claro */
+  transition: background-color 0.5s; /* Transición para suavizar el cambio de color */
+}
+
+.dark-background .gift-box {
+    background-color: rgba(204, 51, 102, 0.8); /* Cambiamos el color de fondo a rosa oscuro con opacidad */
+}
+
+.lid, .box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+  transition: transform 0.5s; /* Transición para suavizar el efecto */
+}
+
+.lid {
+  transform-origin: top; /* El origen de la transformación está en la parte superior */
+}
+
+.box {
+  transform-origin: bottom; /* El origen de la transformación está en la parte inferior */
+}
+
+.gift-box.open .lid {
+  transform: rotateX(90deg); /* Rotación de la tapa para abrir */
+}
+
+.gift-box.open .box {
+  transform: rotateX(-90deg); /* Rotación del cuerpo para abrir */
+}
+
+/* Animación para el deslizamiento de la imagen de fondo */
+.slide-background {
+  animation: slideBackground 5s linear forwards; /* Aplicar la animación con duración de 5 segundos */
+}
+
+/* Estilos para el texto dentro de la caja */
+#giftText {
+    text-align: center;
+    font-size: 22px;
+    color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Escalamos el texto a 0 para ocultarlo inicialmente */
+    opacity: 0; /* Inicialmente, el texto estará oculto */
+    transition: transform 0.5s, opacity 0.5s; /* Agregamos una transición para el texto */
+}
+
+.gift-box.open #giftText {
+    transform: translate(-50%, -50%) scale(1); /* Escalamos el texto a su tamaño normal */
+    opacity: 1; /* Mostramos el texto */
+}
+
+.rose-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden; /* Evita que las rosas se muestren fuera de la ventana */
+}
+
+.rose {
+    position: absolute;
+    width: 30px; /* Ancho de la imagen de la rosa */
+    height: 50px; /* Alto de la imagen de la rosa */
+    background-image: url("https://svgsilh.com/svg/30487-e91e63.svg"); /* Ruta de la imagen de la rosa */
+    background-size: contain;
+    pointer-events: none;
+    animation: fall 5s linear infinite; /* Animación de caída de las rosas */
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh); /* Altura de la ventana del navegador */
+    }
+}
+
+/* Transición para la aparición gradual del texto */
+#regalotxt h1, #regalotxt p, #regalotxt button {
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+#regalotxt h1, #regalotxt p {
+    transition-delay: 2s;
+}
+
+#regalotxt button {
+    transition-delay: 6s;
+}
+
+#regalotxt h1, #regalotxt p, #regalotxt button {
+    opacity: 1;
+}
