@@ -20,24 +20,25 @@ document.addEventListener("DOMContentLoaded", function() {
   let currentText = "";
 
   function showNextTextPart() {
-    if (currentPartIndex < textParts.length - 1) {
+    if (currentPartIndex < textParts.length) {
         currentText += textParts[currentPartIndex].text + " ";
         giftText.textContent = currentText;
         giftBox.style.backgroundImage = textParts[currentPartIndex].image;
         giftBox.style.backgroundSize = "cover"; // La imagen cubrirá todo el contenedor
-      giftBox.style.backgroundRepeat = "no-repeat"; // Evita que la imagen se repita
+        giftBox.style.backgroundRepeat = "no-repeat"; // Evita que la imagen se repita
         currentPartIndex++;
         setTimeout(showNextTextPart, 5000); // Mostrar la siguiente parte después de 5 segundos
     } else {
-        // Mostrar la última parte del texto inmediatamente
-        currentText += textParts[currentPartIndex].text + " ";
-        giftText.textContent = currentText;
-        giftBox.style.backgroundImage = textParts[currentPartIndex].image;
+      giftBox.style.backgroundImage = textParts[2].image;
+        giftBox.style.backgroundSize = "cover"; // La imagen cubrirá todo el contenedor
+        giftBox.style.backgroundRepeat = "no-repeat"; // Evita que la imagen se repita
+
 
         // Cambiar la canción inmediatamente
         music.src = "music/Y2meta.app - Jungkook - Standing Next to You (Traducida al Español) (128 kbps).mp3"; // Cambiar la ruta de la nueva canción
         music.play();
-        music.currentTime += 22
+        music.currentTime += 19
+
     }
 }
 
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
       roseContainer.innerHTML = "";
       music.pause()
       abrelo.style.display="block"
+      
 
     }
    
